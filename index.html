@@ -343,20 +343,80 @@
             margin-bottom: 2.5rem;
         }
 
+        .ask-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ask-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .animated-icon {
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .pulse-circle {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+
+        .pulse-dot {
+            animation: pulseDot 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.3); }
+        }
+
+        .grow-line {
+            stroke-dasharray: 200;
+            stroke-dashoffset: 200;
+            animation: drawLine 2s ease-in-out forwards;
+        }
+
+        @keyframes drawLine {
+            to { stroke-dashoffset: 0; }
+        }
+
+        .float-up {
+            animation: floatUp 2s ease-in-out infinite;
+        }
+
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
         .ask-item h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #00D084;
+            color: #0B0B0B;
         }
 
         .ask-item p {
-            color: #BEBEBE;
+            color: #666666;
             line-height: 1.7;
             font-size: 1.1rem;
         }
 
         .progress-visual {
-            background: rgba(17, 17, 17, 0.8);
+            background: rgba(0, 208, 132, 0.05);
             padding: 3rem;
             border-radius: 20px;
             border: 1px solid rgba(0, 208, 132, 0.2);
@@ -836,18 +896,51 @@
     </section>
 
     <!-- What We Ask -->
-    <section id="what-we-ask">
+    <section id="what-we-ask" style="background: #FFFFFF;">
         <div class="container">
-            <h2 class="section-title">We win when you win.</h2>
+            <h2 class="section-title" style="background: linear-gradient(135deg, #0B0B0B, #00D084); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">We win when you win.</h2>
             <div class="ask-content">
                 <div class="ask-text">
                     <div class="ask-item">
-                        <h3>💰 Small Development Fee</h3>
-                        <p>A symbolic contribution that shows commitment. This covers initial costs and proves you're serious about building.</p>
+                        <div class="ask-icon">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="animated-icon">
+                                <circle cx="50" cy="50" r="40" stroke="url(#gradAsk1)" stroke-width="3" class="pulse-circle"/>
+                                <rect x="30" y="35" width="40" height="30" rx="3" stroke="url(#gradAsk1)" stroke-width="3"/>
+                                <line x1="35" y1="45" x2="65" y2="45" stroke="url(#gradAsk1)" stroke-width="2"/>
+                                <line x1="35" y1="55" x2="65" y2="55" stroke="url(#gradAsk1)" stroke-width="2"/>
+                                <path d="M45 25 L50 35 L55 25" stroke="url(#gradAsk1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="float-up"/>
+                                <circle cx="50" cy="25" r="3" fill="url(#gradAsk1)" class="float-up"/>
+                                <defs>
+                                    <linearGradient id="gradAsk1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#00D084;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#E9FF6A;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h3 style="color: #0B0B0B;">Small Development Fee</h3>
+                        <p style="color: #666666;">A symbolic contribution that shows commitment. This covers initial costs and proves you're serious about building.</p>
                     </div>
                     <div class="ask-item">
-                        <h3>📈 Small Equity Share</h3>
-                        <p>Usually 5-10%, because we invest our time and talent in your success. When you grow, we grow together.</p>
+                        <div class="ask-icon">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="animated-icon">
+                                <path d="M20 70 L30 50 L45 60 L55 40 L70 50 L80 30" stroke="url(#gradAsk2)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="grow-line"/>
+                                <circle cx="30" cy="50" r="5" fill="url(#gradAsk2)" class="pulse-dot" style="animation-delay: 0s;"/>
+                                <circle cx="45" cy="60" r="5" fill="url(#gradAsk2)" class="pulse-dot" style="animation-delay: 0.3s;"/>
+                                <circle cx="55" cy="40" r="5" fill="url(#gradAsk2)" class="pulse-dot" style="animation-delay: 0.6s;"/>
+                                <circle cx="70" cy="50" r="5" fill="url(#gradAsk2)" class="pulse-dot" style="animation-delay: 0.9s;"/>
+                                <circle cx="80" cy="30" r="5" fill="url(#gradAsk2)" class="pulse-dot" style="animation-delay: 1.2s;"/>
+                                <path d="M25 75 L30 70 L35 75 M65 75 L70 70 L75 75" stroke="url(#gradAsk2)" stroke-width="2" stroke-linecap="round" class="float-up"/>
+                                <defs>
+                                    <linearGradient id="gradAsk2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#00D084;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#E9FF6A;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h3 style="color: #0B0B0B;">Small Equity Share</h3>
+                        <p style="color: #666666;">Usually 5-10%, because we invest our time and talent in your success. When you grow, we grow together.</p>
                     </div>
                 </div>
                 <div class="progress-visual">
@@ -855,8 +948,8 @@
                     <div class="progress-bar">
                         <div class="progress-fill"></div>
                     </div>
-                    <p class="progress-label">Aligned for Success</p>
-                    <p style="text-align: center; color: #BEBEBE; margin-top: 1.5rem;">We only succeed when your startup succeeds. That's true partnership.</p>
+                    <p class="progress-label" style="color: #00D084;">Aligned for Success</p>
+                    <p style="text-align: center; color: #666666; margin-top: 1.5rem;">We only succeed when your startup succeeds. That's true partnership.</p>
                 </div>
             </div>
         </div>
