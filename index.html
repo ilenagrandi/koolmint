@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KoolMint.tech - We Build MVPs for Future Unicorns</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0B0B0B, #111111);
+            color: #FFFFFF;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(11, 11, 11, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 208, 132, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00D084, #E9FF6A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-cta {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #00D084, #00D084);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: linear-gradient(135deg, #00D084, #E9FF6A);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 208, 132, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8rem 5% 4rem;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .mint-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 208, 132, 0.3), transparent);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .circle-2 {
+            width: 300px;
+            height: 300px;
+            bottom: 20%;
+            left: 5%;
+            animation-delay: 7s;
+        }
+
+        .circle-3 {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            animation-delay: 14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeUp 1s ease-out;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #FFFFFF, #00D084);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subheadline {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: #BEBEBE;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary, .cta-secondary {
+            padding: 1rem 2.5rem;
+            border-radius: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, #00D084, #00D084);
+            color: white;
+        }
+
+        .cta-primary:hover {
+            background: linear-gradient(135deg, #00D084, #E9FF6A);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 208, 132, 0.4);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: #00D084;
+            border: 2px solid #00D084;
+        }
+
+        .cta-secondary:hover {
+            background: rgba(0, 208, 132, 0.1);
+            border-color: #E9FF6A;
+            color: #E9FF6A;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FFFFFF, #00D084);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #BEBEBE;
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+        }
+
+        /* How It Works */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .step {
+            background: linear-gradient(135deg, rgba(0, 208, 132, 0.05), rgba(233, 255, 106, 0.02));
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 208, 132, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            border-color: #00D084;
+            box-shadow: 0 20px 50px rgba(0, 208, 132, 0.2);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00D084, #E9FF6A);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: #0B0B0B;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #00D084;
+        }
+
+        .step p {
+            color: #BEBEBE;
+            line-height: 1.6;
+        }
+
+        /* What We Offer */
+        .offers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .offer-card {
+            background: rgba(17, 17, 17, 0.8);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 208, 132, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .offer-card:hover {
+            border-color: #00D084;
+            transform: translateY(-5px);
+        }
+
+        .offer-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .offer-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .offer-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #FFFFFF;
+        }
+
+        .offer-card p {
+            color: #BEBEBE;
+            line-height: 1.6;
+        }
+
+        /* What We Ask */
+        .ask-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .ask-item {
+            margin-bottom: 2.5rem;
+        }
+
+        .ask-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00D084;
+        }
+
+        .ask-item p {
+            color: #BEBEBE;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .progress-visual {
+            background: rgba(17, 17, 17, 0.8);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 208, 132, 0.2);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(0, 208, 132, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00D084, #E9FF6A);
+            width: 0%;
+            animation: fillProgress 2s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes fillProgress {
+            to { width: 75%; }
+        }
+
+        .progress-label {
+            text-align: center;
+            color: #00D084;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Why KoolMint */
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .proof-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 208, 132, 0.05), rgba(233, 255, 106, 0.02));
+            border-radius: 20px;
+            border: 1px solid rgba(0, 208, 132, 0.2);
+        }
+
+        .proof-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .proof-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .proof-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #FFFFFF;
+        }
+
+        .proof-card p {
+            color: #BEBEBE;
+            line-height: 1.6;
+        }
+
+        /* Application Form */
+        .apply-section {
+            background: linear-gradient(135deg, rgba(0, 208, 132, 0.05), rgba(233, 255, 106, 0.02));
+            border: 2px solid rgba(0, 208, 132, 0.3);
+            border-radius: 30px;
+            padding: 4rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            margin-bottom: 0.5rem;
+            color: #BEBEBE;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input, select, textarea {
+            padding: 1rem;
+            background: rgba(17, 17, 17, 0.9);
+            border: 1px solid rgba(0, 208, 132, 0.2);
+            border-radius: 12px;
+            color: #FFFFFF;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #00D084;
+            box-shadow: 0 0 20px rgba(0, 208, 132, 0.2);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            grid-column: 1 / -1;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #00D084, #00D084);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #00D084, #E9FF6A);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 208, 132, 0.4);
+        }
+
+        .form-note {
+            text-align: center;
+            color: #BEBEBE;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(11, 11, 11, 0.95);
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(0, 208, 132, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00D084, #E9FF6A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-tagline {
+            color: #BEBEBE;
+            font-style: italic;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #BEBEBE;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #00D084;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 208, 132, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00D084;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: #00D084;
+            color: #0B0B0B;
+            transform: translateY(-3px);
+        }
+
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #00D084, #E9FF6A);
+            color: #0B0B0B;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 10px 40px rgba(0, 208, 132, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(100px);
+        }
+
+        .floating-cta.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .floating-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 208, 132, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 5% 3rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .ask-content {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">KoolMint</div>
+            <a href="#apply" class="nav-cta">Apply for Partnership</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="mint-circle circle-1"></div>
+            <div class="mint-circle circle-2"></div>
+            <div class="mint-circle circle-3"></div>
+        </div>
+        <div class="hero-content">
+            <h1>We build MVPs for future unicorns.</h1>
+            <p class="subheadline">KoolMint partners with non-technical founders to turn validated ideas into real products. You bring the vision — we build the MVP.</p>
+            <div class="cta-group">
+                <a href="#apply" class="cta-primary">Apply for Partnership</a>
+                <a href="#apply" class="cta-secondary">Book a Discovery Call</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">From idea to launch in four simple steps</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Submit Your Idea</h3>
+                    <p>Send your vision, deck, or simple description. We want to understand your problem and solution.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>We Evaluate It</h3>
+                    <p>Our product team scores its success potential. We're selective — only top 10% move forward.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>We Build Together</h3>
+                    <p>Our engineers design and ship your MVP. Full collaboration, regular updates, real partnership.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>You Launch</h3>
+                    <p>Own your product, validate the market, attract funding. We're here for the long-term journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Offer -->
+    <section id="what-we-offer">
+        <div class="container">
+            <h2 class="section-title">Your Tech Team, Without Hiring.</h2>
+            <p class="section-subtitle">Everything you need to build and launch</p>
+            <div class="offers">
+                <div class="offer-card">
+                    <div class="offer-icon">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" stroke="url(#grad1)" stroke-width="3"/>
+                            <path d="M30 50 L45 65 L70 35" stroke="url(#grad1)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="50" cy="50" r="8" fill="url(#grad1)"/>
+                            <defs>
+                                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00D084;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#E9FF6A;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Full-Stack Development</h3>
+                    <p>From backend architecture to frontend polish. We build production-ready code that scales.</p>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="20" y="25" width="60" height="45" rx="5" stroke="url(#grad2)" stroke-width="3"/>
+                            <line x1="20" y1="40" x2="80" y2="40" stroke="url(#grad2)" stroke-width="3"/>
+                            <circle cx="30" cy="32" r="3" fill="url(#grad2)"/>
+                            <circle cx="40" cy="32" r="3" fill="url(#grad2)"/>
+                            <circle cx="50" cy="32" r="3" fill="url(#grad2)"/>
+                            <path d="M30 55 L45 55 M30 60 L50 60 M30 65 L40 65" stroke="url(#grad2)" stroke-width="2" stroke-linecap="round"/>
+                            <rect x="55" y="50" width="15" height="15" rx="2" fill="url(#grad2)" opacity="0.5"/>
+                            <defs>
+                                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00D084;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#E9FF6A;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>UX/UI Design & Prototyping</h3>
+                    <p>Beautiful, intuitive interfaces that users love. Design that converts and delights.</p>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="25" y="40" width="20" height="35" rx="3" stroke="url(#grad3)" stroke-width="3"/>
+                            <rect x="40" y="25" width="20" height="50" rx="3" stroke="url(#grad3)" stroke-width="3"/>
+                            <rect x="55" y="35" width="20" height="40" rx="3" stroke="url(#grad3)" stroke-width="3"/>
+                            <path d="M25 40 L35 30 L50 35 L65 25 L75 35" stroke="url(#grad3)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="35" cy="30" r="4" fill="url(#grad3)"/>
+                            <circle cx="50" cy="35" r="4" fill="url(#grad3)"/>
+                            <circle cx="65" cy="25" r="4" fill="url(#grad3)"/>
+                            <defs>
+                                <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00D084;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#E9FF6A;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Technical Strategy</h3>
+                    <p>Smart architectural decisions that set you up for success. Build once, scale forever.</p>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 20 L60 40 L80 43 L65 58 L68 78 L50 68 L32 78 L35 58 L20 43 L40 40 Z" stroke="url(#grad4)" stroke-width="3" fill="none"/>
+                            <circle cx="50" cy="50" r="8" fill="url(#grad4)"/>
+                            <path d="M50 30 L50 15 M50 85 L50 70 M70 50 L85 50 M15 50 L30 50" stroke="url(#grad4)" stroke-width="3" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00D084;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#E9FF6A;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Lean MVP Launch</h3>
+                    <p>Ship fast, learn faster. We help you get to market with the right features at the right time.</p>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="30" stroke="url(#grad5)" stroke-width="3"/>
+                            <path d="M50 30 L50 50 L65 65" stroke="url(#grad5)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="50" cy="50" r="5" fill="url(#grad5)"/>
+                            <path d="M30 20 Q50 15 70 20 M70 80 Q50 85 30 80" stroke="url(#grad5)" stroke-width="2" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00D084;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#E9FF6A;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Maintenance & Support</h3>
+                    <p>Post-launch care and iteration. Your product evolves as your users provide feedback.</p>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="35" r="12" stroke="url(#grad6)" stroke-width="3"/>
+                            <path d="M35 65 Q35 50 50 50 Q65 50 65 65 L65 75 L35 75 Z" stroke="url(#grad6)" stroke-width="3" fill="none"/>
+                            <path d="M25 45 L30 50 L25 55 M75 45 L70 50 L75 55" stroke="url(#grad6)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="50" cy="35" r="4" fill="url(#grad6)"/>
+                            <defs>
+                                <linearGradient id="grad6" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00D084;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#E9FF6A;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Post-Launch Advisory</h3>
+                    <p>Strategic guidance as you grow. Technical co-founders who care about your success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Ask -->
+    <section id="what-we-ask">
+        <div class="container">
+            <h2 class="section-title">We win when you win.</h2>
+            <div class="ask-content">
+                <div class="ask-text">
+                    <div class="ask-item">
+                        <h3>💰 Small Development Fee</h3>
+                        <p>A symbolic contribution that shows commitment. This covers initial costs and proves you're serious about building.</p>
+                    </div>
+                    <div class="ask-item">
+                        <h3>📈 Small Equity Share</h3>
+                        <p>Usually 5-10%, because we invest our time and talent in your success. When you grow, we grow together.</p>
+                    </div>
+                </div>
+                <div class="progress-visual">
+                    <h3 style="color: #00D084; text-align: center; margin-bottom: 1rem;">Our Incentive = Your Growth</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <p class="progress-label">Aligned for Success</p>
+                    <p style="text-align: center; color: #BEBEBE; margin-top: 1.5rem;">We only succeed when your startup succeeds. That's true partnership.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why KoolMint -->
+    <section id="why-koolmint">
+        <div class="container">
+            <h2 class="section-title">Not another agency. Your technical co-founder.</h2>
+            <p class="section-subtitle">Why founders choose us</p>
+            <div class="proof-grid">
+                <div class="proof-card">
+                    <div class="proof-icon">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="40" stroke="url(#grad7)" stroke-width="4"/>
+                            <path d="M30 50 L45 65 L70 35" stroke="url(#grad7)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <defs>
+                                <linearGradient id="grad7" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00D084;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#E9FF6A;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Built and Launched Before</h3>
+                    <p>We've been in the trenches. We know what it takes to go from zero to one, from idea to traction.</p>
+                </div>
+                <div class="proof-card">
+                    <div class="proof-icon">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="35" stroke="url(#grad8)" stroke-width="3"/>
+                            <circle cx="50" cy="50" r="25" stroke="url(#grad8)" stroke-width="3"/>
+                            <circle cx="50" cy="50" r="15" stroke="url(#grad8)" stroke-width="3"/>
+                            <circle cx="50" cy="50" r="5" fill="url(#grad8)"/>
+                            <line x1="50" y1="15" x2="50" y2="25" stroke="url(#grad8)" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="85" y1="50" x2="75" y2="50" stroke="url(#grad8)" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="50" y1="85" x2="50" y2="75" stroke="url(#grad8)" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="15" y1="50" x2="25" y2="50" stroke="url(#grad8)" stroke-width="3" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="grad8" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00D084;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#E9FF6A;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Selective — Top 10% Only</h3>
+                    <p>We partner with the best ideas. Limited slots each month means we give your project the attention it deserves.</p>
+                </div>
+                <div class="proof-card">
+                    <div class="proof-icon">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 20 L65 35 L80 30 L70 45 L85 60 L65 60 L50 80 L35 60 L15 60 L30 45 L20 30 L35 35 Z" stroke="url(#grad9)" stroke-width="3" fill="none"/>
+                            <circle cx="50" cy="45" r="10" fill="url(#grad9)"/>
+                            <path d="M42 45 L47 50 L58 39" stroke="#0B0B0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <defs>
+                                <linearGradient id="grad9" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00D084;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#E9FF6A;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Deep Tech + Design Expertise</h3>
+                    <p>World-class engineers and designers who've worked at top startups. Quality you can trust.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apply Now -->
+    <section id="apply">
+        <div class="container">
+            <div class="apply-section">
+                <h2 class="section-title">Ready to Build?</h2>
+                <p class="section-subtitle">Apply for partnership — limited projects accepted each month</p>
+                <form class="form-grid" id="applicationForm">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" required placeholder="Jane Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" required placeholder="jane@startup.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Startup Name *</label>
+                        <input type="text" required placeholder="Your Startup">
+                    </div>
+                    <div class="form-group">
+                        <label>Stage *</label>
+                        <select required>
+                            <option value="">Select stage...</option>
+                            <option value="idea">Idea</option>
+                            <option value="prototype">Prototype</option>
+                            <option value="early">Early Users</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Problem & Solution *</label>
+                        <textarea required placeholder="What problem are you solving? How does your solution work?"></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Timeline</label>
+                        <input type="text" placeholder="When do you want to launch?">
+                    </div>
+                    <button type="submit" class="submit-btn">🚀 Submit Your Idea</button>
+                </form>
+                <p class="form-note">We review applications weekly. You'll hear from us within 5 business days.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">KoolMint</div>
+                <p class="footer-tagline">We invest through code.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#faq">FAQs</a>
+                <a href="#terms">Terms</a>
+                <a href="#privacy">Privacy</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-icon">in</a>
+                <a href="#" class="social-icon">𝕏</a>
+                <a href="#" class="social-icon">▶</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA -->
+    <a href="#apply" class="floating-cta" id="floatingCta">📞 Book a Call</a>
+
+    <script>
+        // Floating CTA on scroll
+        window.addEventListener('scroll', () => {
+            const floatingCta = document.getElementById('floatingCta');
+            if (window.scrollY > 800) {
+                floatingCta.classList.add('visible');
+            } else {
+                floatingCta.classList.remove('visible');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('applicationForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('🎉 Application submitted! We\'ll review your idea and get back to you within 5 business days.');
+            e.target.reset();
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
