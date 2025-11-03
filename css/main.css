@@ -1,0 +1,63 @@
+/* Main CSS File - Imports all stylesheets */
+@import url('variables.css');
+@import url('base.css');
+@import url('components.css');
+@import url('layout.css');
+@import url('animations.css');
+@import url('modal.css');
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hero {
+        padding: var(--spacing-3xl) 5% var(--spacing-xl);
+    }
+
+    .hero-logo {
+        width: 150px;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .cta-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .ask-content {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    section {
+        padding: var(--spacing-2xl) 5%;
+    }
+
+    .modal-content {
+        padding: var(--spacing-lg) var(--spacing-md);
+        margin: var(--spacing-sm);
+    }
+
+    .form-steps {
+        gap: var(--spacing-xs);
+    }
+
+    .step-label {
+        font-size: 0.7rem;
+    }
+}
+
