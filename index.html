@@ -132,6 +132,23 @@
             animation: fadeUp 1s ease-out;
         }
 
+        .hero-logo {
+            width: 200px;
+            height: auto;
+            margin: 0 auto 2rem;
+            display: block;
+            animation: fadeUp 1s ease-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        @media (max-width: 768px) {
+            .hero-logo {
+                width: 150px;
+                margin-bottom: 1.5rem;
+            }
+        }
+
         @keyframes fadeUp {
             from {
                 opacity: 0;
@@ -734,6 +751,7 @@
             <div class="mint-circle circle-3"></div>
         </div>
         <div class="hero-content">
+            <img src="images/logo.png" alt="KoolMint Logo" class="hero-logo">
             <h1>We build MVPs for future unicorns.</h1>
             <p class="subheadline">KoolMint partners with non-technical founders to turn validated ideas into real products. You bring the vision — we build the MVP.</p>
             <div class="cta-group">
