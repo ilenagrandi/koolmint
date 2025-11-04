@@ -89,6 +89,12 @@ nav {
     animation: fadeUp 1s ease-out;
 }
 
+.hero h1 {
+    animation: none; /* Typing animation handles the appearance */
+    opacity: 1; /* Always visible once typing starts */
+    min-height: 1.2em; /* Prevent layout shift */
+}
+
 .hero-logo {
     width: 200px;
     height: auto;
