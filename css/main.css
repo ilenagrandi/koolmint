@@ -23,7 +23,19 @@
     }
 
     .steps {
-        grid-template-columns: 1fr;
+        padding-left: 3rem;
+        max-width: 100%;
+    }
+
+    .step-number {
+        left: -3rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .steps::before {
+        left: 1.5rem;
     }
 
     .ask-content {

@@ -4,3 +4,11 @@
 
 console.log('KoolMint website loaded successfully');
 
+// Set current year in copyright
+document.addEventListener('DOMContentLoaded', () => {
+    const yearElement = document.getElementById('currentYear');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+});
+

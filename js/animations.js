@@ -45,6 +45,57 @@ class ScrollAnimations {
             section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             observer.observe(section);
         });
+
+        // Scroll stack animation for steps
+        this.initScrollStack();
+    }
+
+    initScrollStack() {
+        const steps = document.querySelectorAll('.step');
+        if (steps.length === 0) return;
+
+        const stepObserverOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const stepObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 150); // Stagger animation
+                }
+            });
+        }, stepObserverOptions);
+
+        steps.forEach(step => {
+            stepObserver.observe(step);
+        });
+    }
+
+    initOfferCards() {
+        const offerCards = document.querySelectorAll('.offer-card');
+        if (offerCards.length === 0) return;
+
+        const cardObserverOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100); // Stagger animation for cards
+                }
+            });
+        }, cardObserverOptions);
+
+        offerCards.forEach(card => {
+            cardObserver.observe(card);
+        });
     }
 
     initSmoothScroll() {

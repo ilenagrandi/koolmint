@@ -3,10 +3,12 @@ class TypingAnimation {
     constructor(element, text, options = {}) {
         this.element = element;
         this.text = text;
-        this.speed = options.speed || 50; // milliseconds per character
-        this.delay = options.delay || 500; // delay before starting
+        this.baseSpeed = options.speed || 80; // base milliseconds per character
+        this.delay = options.delay || 1000; // delay before starting
         this.cursor = options.cursor !== false; // show cursor
         this.cursorChar = options.cursorChar || '|';
+        this.variation = options.variation || 30; // speed variation for natural feel
+        this.spaceDelay = options.spaceDelay || 120; // extra delay for spaces
         this.init();
     }
 
@@ -33,6 +35,18 @@ class TypingAnimation {
         }, this.delay);
     }
 
+    getSpeed(char) {
+        // Slower for spaces and punctuation
+        if (char === ' ') {
+            return this.baseSpeed + this.spaceDelay;
+        }
+        if (char === '.' || char === ',' || char === '!' || char === '?') {
+            return this.baseSpeed * 2; // Pause longer at punctuation
+        }
+        // Add slight variation for natural feel
+        return this.baseSpeed + (Math.random() * this.variation - this.variation / 2);
+    }
+
     type() {
         let index = 0;
         
@@ -40,36 +54,51 @@ class TypingAnimation {
             if (index < this.text.length) {
                 // Remove cursor temporarily
                 if (this.cursor && this.cursorElement) {
-                    this.cursorElement.remove();
+                    this.cursorElement.style.opacity = '0';
+                    this.cursorElement.style.transition = 'opacity 0.1s ease';
                 }
                 
-                // Add next character
+                // Add next character with fade-in effect
                 const char = this.text[index];
                 const textNode = document.createTextNode(char);
-                this.element.appendChild(textNode);
+                const span = document.createElement('span');
+                span.style.opacity = '0';
+                span.style.transition = 'opacity 0.2s ease';
+                span.appendChild(textNode);
+                this.element.appendChild(span);
                 
-                // Re-add cursor
+                // Fade in the character
+                setTimeout(() => {
+                    span.style.opacity = '1';
+                }, 10);
+                
+                // Re-add cursor with fade
                 if (this.cursor && this.cursorElement) {
                     this.element.appendChild(this.cursorElement);
+                    setTimeout(() => {
+                        this.cursorElement.style.opacity = '1';
+                    }, 10);
                 }
                 
                 index++;
                 
-                // Continue typing
-                setTimeout(typeChar, this.speed);
+                // Continue typing with variable speed
+                const speed = this.getSpeed(char);
+                setTimeout(typeChar, speed);
             } else {
-                // Typing complete - remove cursor after a brief delay
+                // Typing complete - remove cursor smoothly
                 if (this.cursor && this.cursorElement) {
                     setTimeout(() => {
                         if (this.cursorElement && this.cursorElement.parentNode) {
+                            this.cursorElement.style.transition = 'opacity 0.5s ease';
                             this.cursorElement.style.opacity = '0';
                             setTimeout(() => {
                                 if (this.cursorElement && this.cursorElement.parentNode) {
                                     this.cursorElement.remove();
                                 }
-                            }, 300);
+                            }, 500);
                         }
-                    }, 1000);
+                    }, 800);
                 }
             }
         };
@@ -91,10 +120,12 @@ if (document.readyState === 'loading') {
         if (heroTitle) {
             const originalText = heroTitle.textContent.trim();
             window.typingAnimation = new TypingAnimation(heroTitle, originalText, {
-                speed: 60,
-                delay: 800, // Wait for logo animation
+                speed: 100, // Slower base speed for smoother feel
+                delay: 1200, // Wait longer for logo animation
                 cursor: true,
-                cursorChar: '|'
+                cursorChar: '|',
+                variation: 40, // More variation for natural rhythm
+                spaceDelay: 150 // Longer pause at spaces
             });
         }
     });
@@ -103,10 +134,12 @@ if (document.readyState === 'loading') {
     if (heroTitle) {
         const originalText = heroTitle.textContent.trim();
         window.typingAnimation = new TypingAnimation(heroTitle, originalText, {
-            speed: 60,
-            delay: 800,
+            speed: 100,
+            delay: 1200,
             cursor: true,
-            cursorChar: '|'
+            cursorChar: '|',
+            variation: 40,
+            spaceDelay: 150
         });
     }
 }

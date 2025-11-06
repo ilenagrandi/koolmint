@@ -82,7 +82,8 @@
         <div class="container">
             <h2 class="section-title">Your Tech Team, Without Hiring.</h2>
             <p class="section-subtitle">Everything you need to build and launch</p>
-            <div class="offers">
+            <div class="offers-container">
+                <div class="offers" id="offersCarousel">
                 <div class="offer-card">
                     <div class="offer-icon">
                         <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -194,6 +195,7 @@
                     </div>
                     <h3>Post-Launch Advisory</h3>
                     <p>Strategic guidance as you grow. Technical co-founders who care about your success.</p>
+                </div>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 3rem;">
@@ -487,13 +489,23 @@
                 <a href="#" class="social-icon">▶</a>
             </div>
         </div>
+        <div class="footer-copyright">
+            <p>&copy; <span id="currentYear"></span> KoolMint.tech. All rights reserved.</p>
+        </div>
     </footer>
 
     <!-- Floating CTA -->
     <a href="#" class="floating-cta open-modal-btn" id="floatingCta">📞 Book a Call</a>
 
     <script src="js/config.js"></script>
-    <script src="js/typing.js"></script>
+    <script type="module">
+        // Load OGL and expose to window
+        import * as OGL from 'https://esm.sh/ogl@0.0.7';
+        window.OGL = OGL;
+    </script>
+    <script src="js/liquid-chrome.js"></script>
+    <script src="js/hyperspeed.js"></script>
+    <script src="js/carousel.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/form.js"></script>
     <script src="js/animations.js"></script>
