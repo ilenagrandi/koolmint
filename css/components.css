@@ -219,6 +219,25 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 0 0 20px rgba(0, 208, 132, 0.2);
 }
 
+input:invalid:not(:focus):not(:placeholder-shown),
+select:invalid:not(:focus):not(:placeholder-shown),
+textarea:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: var(--color-error);
+}
+
+input[data-error="true"],
+select[data-error="true"],
+textarea[data-error="true"] {
+    border-color: var(--color-error);
+}
+
+.field-error {
+    color: var(--color-error);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    animation: fadeIn 0.3s ease;
+}
+
 textarea {
     min-height: 120px;
     resize: vertical;
