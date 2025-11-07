@@ -91,7 +91,9 @@
     background: rgba(0, 208, 132, 0.1);
 }
 
-.btn-prev.hidden {
+.btn-prev.hidden,
+.btn-next.hidden,
+.btn-submit.hidden {
     display: none;
 }
 

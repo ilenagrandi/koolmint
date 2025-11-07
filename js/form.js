@@ -224,7 +224,14 @@ class FormHandler {
         // Update navigation buttons
         this.prevBtn.classList.toggle('hidden', step === 1);
         this.nextBtn.classList.toggle('hidden', step === this.totalSteps);
-        this.submitBtn.classList.toggle('hidden', step !== this.totalSteps);
+        // Submit button should only show on the last step
+        if (step === this.totalSteps) {
+            this.submitBtn.classList.remove('hidden');
+            this.nextBtn.classList.add('hidden');
+        } else {
+            this.submitBtn.classList.add('hidden');
+            this.nextBtn.classList.remove('hidden');
+        }
         
         // Update review step
         if (step === this.totalSteps) {
@@ -393,9 +400,19 @@ class FormHandler {
                 // Show success message
                 alert('🎉 Application submitted! We\'ll review your idea and get back to you within 5 business days.');
                 
-                if (window.modal) {
+                // Close modal
+                if (window.modal && window.modal.close) {
                     window.modal.close();
+                } else {
+                    // Fallback: close modal directly
+                    const modal = document.getElementById('applicationModal');
+                    if (modal) {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
                 }
+                
+                // Reset form
                 this.reset();
             } catch (error) {
                 console.error('Error submitting application:', error);
