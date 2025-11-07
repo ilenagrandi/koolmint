@@ -310,8 +310,57 @@ class FormHandler {
 
     next() {
         if (this.validateStep(this.currentStep)) {
+            // Send data to webhook before advancing
+            this.sendToWebhook(this.currentStep);
+            
             this.currentStep++;
             this.updateStep(this.currentStep);
+        }
+    }
+
+    collectFormData() {
+        // Collect all form data
+        const formData = {
+            step: this.currentStep,
+            timestamp: new Date().toISOString(),
+            fullName: document.getElementById('fullName')?.value || '',
+            email: document.getElementById('email')?.value || '',
+            phone: document.getElementById('phone')?.value || '',
+            startupName: document.getElementById('startupName')?.value || '',
+            stage: document.getElementById('stage')?.value || '',
+            website: document.getElementById('website')?.value || '',
+            problemSolution: document.getElementById('problemSolution')?.value || '',
+            targetMarket: document.getElementById('targetMarket')?.value || '',
+            timeline: document.getElementById('timeline')?.value || ''
+        };
+        
+        return formData;
+    }
+
+    async sendToWebhook(step) {
+        try {
+            const formData = this.collectFormData();
+            formData.step = step;
+            formData.action = 'step_progress'; // Indicates this is a step update, not final submission
+            
+            // Send to Make.com webhook
+            const response = await fetch(CONFIG.form.webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (!response.ok) {
+                console.warn('Webhook request failed:', response.status);
+                // Don't block user progress if webhook fails
+            } else {
+                console.log('Data sent to webhook successfully for step', step);
+            }
+        } catch (error) {
+            console.error('Error sending data to webhook:', error);
+            // Don't block user progress if webhook fails
         }
     }
 
@@ -320,15 +369,38 @@ class FormHandler {
         this.updateStep(this.currentStep);
     }
 
-    handleSubmit(e) {
+    async handleSubmit(e) {
         e.preventDefault();
         if (this.validateStep(this.currentStep)) {
-            // Show success message
-            alert('🎉 Application submitted! We\'ll review your idea and get back to you within 5 business days.');
-            if (window.modal) {
-                window.modal.close();
+            try {
+                // Send final submission to webhook
+                const formData = this.collectFormData();
+                formData.step = this.currentStep;
+                formData.action = 'final_submission'; // Indicates this is the final submission
+                
+                const response = await fetch(CONFIG.form.webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to submit application');
+                }
+
+                // Show success message
+                alert('🎉 Application submitted! We\'ll review your idea and get back to you within 5 business days.');
+                
+                if (window.modal) {
+                    window.modal.close();
+                }
+                this.reset();
+            } catch (error) {
+                console.error('Error submitting application:', error);
+                alert('There was an error submitting your application. Please try again or contact us directly.');
             }
-            this.reset();
         }
     }
 
